@@ -15,7 +15,7 @@ application.yml
 .idea/
 *.iml
 .vscode/
-
+uploads/
 # Maven wrapper
 
 .mvn/wrapper/maven-wrapper.jar

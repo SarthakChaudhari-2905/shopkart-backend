@@ -22,7 +22,6 @@ spring:
 
   kafka:
     enabled: false
-    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
 
 aws:
   access-key: ${AWS_ACCESS_KEY}

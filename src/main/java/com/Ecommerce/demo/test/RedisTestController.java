@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Profile("!production")
 public class RedisTestController {
 
     private final StringRedisTemplate redisTemplate;

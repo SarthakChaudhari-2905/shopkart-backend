@@ -26,7 +26,8 @@ spring:
           auth: true
           starttls:
             enable: true
-
+  kafka:
+    enabled: false
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
@@ -46,3 +47,7 @@ razorpay:
   key:
     id: ${RAZORPAY_KEY_ID}
     secret: ${RAZORPAY_KEY_SECRET}
+logging:
+  level:
+    root: WARN
+    com.Ecommerce: INFO

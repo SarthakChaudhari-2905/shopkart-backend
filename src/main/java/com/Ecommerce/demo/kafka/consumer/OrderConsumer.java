@@ -6,11 +6,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
-@ConditionalOnProperty(
-        name = "spring.kafka.enabled",
-        havingValue = "true",
-        matchIfMissing = true
-)
+@ConditionalOnProperty(name = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
 public class OrderConsumer {
 
     @KafkaListener(

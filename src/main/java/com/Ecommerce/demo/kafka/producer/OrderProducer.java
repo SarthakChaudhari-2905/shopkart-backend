@@ -1,10 +1,16 @@
 package com.Ecommerce.demo.kafka.producer;
 
 import com.Ecommerce.demo.kafka.dto.OrderEvent;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(
+        name = "spring.kafka.enabled",
+        havingValue = "true",
+        matchIfMissing = true
+)
 public class OrderProducer {
 
     private final KafkaTemplate<String, Object> kafkaTemplate;

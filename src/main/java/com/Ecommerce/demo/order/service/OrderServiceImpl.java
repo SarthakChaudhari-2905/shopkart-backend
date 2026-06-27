@@ -13,6 +13,7 @@ import com.Ecommerce.demo.order.repository.OrderRepository;
 import com.Ecommerce.demo.product.repository.ProductRepository;
 import com.Ecommerce.demo.user.entity.User;
 import com.Ecommerce.demo.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
             CartItemRepository cartItemRepository,
             UserRepository userRepository,
             ProductRepository productRepository,
+            @Autowired(required = false)
             OrderProducer orderProducer
     ) {
         this.orderRepository = orderRepository;
@@ -152,17 +154,17 @@ public class OrderServiceImpl implements OrderService {
                     )
             );
         }
-        OrderEvent event =
-                new OrderEvent(
-                        order.getId(),
-                        user.getEmail(),
-                        totalAmount
-                );
-
-        orderProducer.sendOrderEvent(
-                event
-        );
-
+        if (orderProducer != null) {
+            orderProducer.sendOrderEvent(
+                    new OrderEvent(
+                            order.getId(),
+                            user.getEmail(),
+                            totalAmount
+                    )
+            );
+        } else {
+            System.out.println("Kafka disabled.");
+        }
 
         cartItemRepository.deleteAll(cartItems);
 

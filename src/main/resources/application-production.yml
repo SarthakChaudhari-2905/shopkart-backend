@@ -21,6 +21,7 @@ spring:
             enable: true
 
   kafka:
+    enabled: false
     bootstrap-servers: ${KAFKA_SERVERS}
 
 aws:

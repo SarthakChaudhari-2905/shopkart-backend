@@ -3,10 +3,17 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   data:
     redis:
       url: ${REDIS_URL}
+      ssl:
+        enabled: true
 
   mail:
     host: smtp.gmail.com
@@ -20,8 +27,9 @@ spring:
           starttls:
             enable: true
 
-  kafka:
-    enabled: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
 
 aws:
   access-key: ${AWS_ACCESS_KEY}

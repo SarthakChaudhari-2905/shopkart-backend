@@ -90,7 +90,8 @@ public class WishlistServiceImpl
                             item.getId(),
                             item.getProduct().getId(),
                             item.getProduct().getName(),
-                            item.getProduct().getPrice()
+                            item.getProduct().getPrice(),
+                            item.getProduct().getImageUrl()
                     )
             );
         }

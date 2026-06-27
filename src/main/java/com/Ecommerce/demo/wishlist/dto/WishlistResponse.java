@@ -11,6 +11,7 @@ public class WishlistResponse {
     private String productName;
 
     private BigDecimal price;
+    private String imageUrl;
 
     public WishlistResponse() {
     }
@@ -19,12 +20,14 @@ public class WishlistResponse {
             Long wishlistItemId,
             Long productId,
             String productName,
-            BigDecimal price
+            BigDecimal price,
+            String imageUrl
     ) {
         this.wishlistItemId = wishlistItemId;
         this.productId = productId;
         this.productName = productName;
         this.price = price;
+        this.imageUrl=imageUrl;
     }
 
     public Long getWishlistItemId() {
@@ -57,5 +60,13 @@ public class WishlistResponse {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

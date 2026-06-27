@@ -2,12 +2,14 @@ package com.Ecommerce.demo.email;
 
 import com.Ecommerce.demo.kafka.dto.OrderEvent;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Service
+@ConditionalOnProperty(name = "spring.kafka.enabled", havingValue = "true", matchIfMissing = false)
 public class EmailConsumer {
 
     private final EmailService emailService;
